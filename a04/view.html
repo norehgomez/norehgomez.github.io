@@ -1,99 +1,112 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dog Image Gallery - View</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <style>
-    body {
-      background-image: url('https://images.unsplash.com/photo-1592194996304-df3d56772612?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      height: 100vh;
-      margin: 0;
-      color: #fff;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    nav {
-      background: rgba(255, 255, 255, 0.8);
-    }
-
-    .container {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    .btn-primary, .btn-danger, .btn-secondary {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .text-center {
-      color: white;
-    }
-  </style>
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Back to Home</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog Image Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body {
+        background: linear-gradient(to bottom, #87CEEB, #B0E0E6);
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 0.7); /* White background with transparency */
+        padding: 20px;
+        border-radius: 10px;
+      }
+      #image-container {
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">My Activities</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="../index.html"><button class="btn btn-outline-primary">Home</button></a>
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-outline-danger" onclick="exitPage()">Exit</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container text-center">
+        <h1>Dog Breed Description</h1>
+        <div id="image-container" class="my-4"></div>
+        <a href="index.html" class="btn btn-secondary">Back to Gallery</a>
     </div>
-  </nav>
 
-  <div class="container mt-5">
-    <h1 class="text-center" id="gallery-title">Dog Image Gallery</h1>
-    <div class="row gallery" id="gallery"></div>
-  </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const breed = params.get("breed");
+        const image = params.get("image");
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const breed = urlParams.get('breed');
-    const gallery = document.getElementById('gallery');
-    const title = document.getElementById('gallery-title');
-    
-    if (breed) {
-      title.textContent = `Images of ${breed}`;
-      fetch(`https://dog.ceo/api/breed/${breed}/images`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            data.message.slice(0, 12).forEach(image => {
-              const col = document.createElement('div');
-              col.className = 'col-md-4 col-sm-6';
-              col.innerHTML = `
-                <img src="${image}" alt="${breed}" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="viewImage('${image}')">
-              `;
-              gallery.appendChild(col);
-            });
-          } else {
-            gallery.innerHTML = "<p>No images found for this breed.</p>";
-          }
-        })
-        .catch(error => {
-          gallery.innerHTML = "<p>Something went wrong. Please try again later.</p>";
-          console.error("Error fetching images:", error);
-        });
-    } else {
-      gallery.innerHTML = "<p>Please enter a dog breed to search for images.</p>";
-    }
-  </script>
+        const breedDescriptions = {
+            "labrador": "The Labrador Retriever is one of the most popular dog breeds. Known for their friendly nature, intelligence, and loyalty.",
+            "hound": "These dogs are fast and assist hunters in catching game: fox, hare, deer, and elk. Scenthounds follow prey or others (like missing people) by tracking its scent. These dogs have endurance, but are not fast runners.",
+            "bulldog": "The Bulldog is a muscular and compact breed with a characteristic wrinkled face and unique underbite.",
+            "beagle": "The Beagle is a small hound breed, well known for its keen sense of smell and love of tracking scents.",
+            "poodle": "Poodles are highly intelligent and versatile dogs. They come in three sizes: standard, miniature, and toy.",
+            "germanshepherd": "German Shepherds are highly intelligent and versatile working dogs, often used in police and military roles.",
+            "goldenretriever": "Golden Retrievers are large, friendly dogs known for their intelligence and loyalty. They make excellent family pets.",
+            "chihuahua": "Chihuahuas are tiny, alert dogs with large eyes and ears. They are known for their big personality despite their small size.",
+            "dachshund": "Dachshunds, also known as 'wiener dogs', are characterized by their long bodies and short legs. They are brave and curious.",
+            "rottweiler": "Rottweilers are confident and fearless dogs. They are known for being loyal and protective towards their families.",
+            "boxer": "Boxers are strong, energetic dogs with a playful and affectionate nature. They are great companions for active families.",
+            "schnauzer": "Schnauzers are intelligent, alert dogs with distinctive facial hair. They come in miniature, standard, and giant sizes.",
+            "frenchbulldog": "French Bulldogs are small, sturdy dogs with bat-like ears. They are playful and affectionate companions.",
+            "shiba": "The Shiba Inu is a small to medium-sized breed with a bold, confident personality and a curled tail.",
+            "pug": "Pugs are small, comical dogs with wrinkled faces and a love for attention. They are friendly and affectionate pets.",
+            "husky": "Siberian Huskies are medium-sized dogs known for their striking blue eyes and thick fur coats. They are energetic and independent.",
+            "dalmatian": "Dalmatians are known for their distinctive black or liver-colored spots on a white coat. They are energetic and intelligent.",
+            "corgi": "Corgis are small, herding dogs known for their short legs and long bodies. They are friendly, loyal, and energetic.",
+            "greatdane": "Great Danes are one of the largest dog breeds. They are known for their gentle nature and affectionate temperament.",
+            "bordercollie": "Border Collies are highly intelligent and energetic dogs. They excel in herding and require plenty of mental stimulation.",
+            "australianshepherd": "Australian Shepherds are energetic and intelligent dogs, originally bred for herding livestock.",
+            "maltese": "Maltese dogs are small, elegant, and friendly. They have long, silky fur and are known for their loving nature."
+        };
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+        if (breed && image) {
+            const breedLowerCase = breed.toLowerCase();
+            const description = breedDescriptions[breedLowerCase] || "No description available for this breed.";
 
+            document.getElementById("image-container").innerHTML = `
+                <h2>${breed.charAt(0).toUpperCase() + breed.slice(1)}</h2>
+                <img src="${decodeURIComponent(image)}" class="img-fluid" alt="${breed}">
+                <p class="mt-4">${description}</p>
+            `;
+        } else {
+            document.getElementById("image-container").innerHTML = "<p>No image selected.</p>";
+        }
+    </script>
+
+    <script>
+        function goHome() {
+            alert("Navigating to the home page.");
+            window.location.href = "index.html";
+        }
+
+        function exitPage() {
+            const confirmExit = confirm("Are you sure you want to close this page?");
+            if (confirmExit) {
+                window.close();
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
 </html>
