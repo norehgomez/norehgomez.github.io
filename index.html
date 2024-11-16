@@ -16,14 +16,20 @@
       background-attachment: fixed;
       height: 100vh;
       margin: 0;
+      color: #fff;
     }
 
     .activity-card {
       transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .activity-card:hover {
       transform: scale(1.05);
+    }
+
+    h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
   </style>
 </head>
@@ -39,7 +45,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <button class="btn btn-outline-primary" onclick="goHome()">Home</button>
+            <button class="btn btn-outline-primary me-2" onclick="goHome()">Home</button>
           </li>
           <li class="nav-item">
             <button class="btn btn-outline-danger" onclick="exitPage()">Exit</button>
@@ -50,7 +56,7 @@
   </nav>
 
   <div class="container mt-5">
-    <h1 class="text-center mb-4 text-white">Course Activities</h1>
+    <h1 class="text-center mb-4">Course Activities</h1>
     <div class="row">
       <div class="col-md-4 mb-3">
         <div class="card activity-card">
@@ -64,7 +70,7 @@
       <div class="col-md-4 mb-3">
         <div class="card activity-card">
           <div class="card-body text-center">
-            <h5 class="card-title">Activity 3: </h5>
+            <h5 class="card-title">Activity 3: Placeholder Title</h5>
             <a href="a03/index.html" class="btn btn-success">View Activity 3</a>
           </div>
         </div>
@@ -82,14 +88,21 @@
   </div>
 
   <script>
+    // Function to navigate to the home page
+    function goHome() {
+      alert("Navigating to the home page.");
+      window.location.href = "index.html"; // Replace with your actual home page URL
+    }
+
+    // Function to exit the page
     function exitPage() {
       const confirmExit = confirm("Are you sure you want to close this page?");
       if (confirmExit) {
         window.close();
       }
     }
-
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
