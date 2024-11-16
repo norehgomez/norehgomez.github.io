@@ -55,7 +55,6 @@
 
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dog Image Gallery</a>
@@ -75,7 +74,6 @@
     </div>
   </nav>
 
-  <!-- Gallery Section -->
   <div class="container mt-5">
     <h1 class="text-center">Dog Image Gallery</h1>
     <form id="search-form" class="my-3">
@@ -87,21 +85,26 @@
     <div class="row gallery" id="gallery"></div>
   </div>
 
-  <!-- Dog Image Viewer Section -->
-  <div class="container my-4 text-center">
-    <h1>Dog Image Viewer</h1>
-    <div id="image-container" class="my-4"></div>
-    <a href="index.html" class="btn btn-secondary">Back to Gallery</a>
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Dog Image</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" src="" alt="Dog Image" class="img-fluid">
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Home Button Functionality
     function goHome() {
       alert("Navigating to the home page.");
-      window.location.href = "index.html"; // Replace with your home page URL
+      window.location.href = "index.html";
     }
 
-    // Exit Page Functionality
     function exitPage() {
       const confirmExit = confirm("Are you sure you want to close this page?");
       if (confirmExit) {
@@ -109,12 +112,11 @@
       }
     }
 
-    // Dog Gallery Search
     document.getElementById("search-form").addEventListener("submit", async function (event) {
       event.preventDefault();
       const breed = document.getElementById("breed").value.toLowerCase();
       const gallery = document.getElementById("gallery");
-      gallery.innerHTML = ""; // Clear previous results
+      gallery.innerHTML = "";
 
       if (!breed.trim()) {
         gallery.innerHTML = "<p>Please enter a dog breed.</p>";
@@ -130,9 +132,7 @@
             const col = document.createElement("div");
             col.className = "col-md-4 col-sm-6";
             col.innerHTML = `
-              <a href="viewer.html?breed=${breed}&image=${encodeURIComponent(image)}">
-                <img src="${image}" alt="${breed}" class="img-fluid">
-              </a>
+              <img src="${image}" alt="${breed}" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="viewImage('${image}')">
             `;
             gallery.appendChild(col);
           });
@@ -145,18 +145,9 @@
       }
     });
 
-    // Dog Image Viewer
-    const params = new URLSearchParams(window.location.search);
-    const breed = params.get("breed");
-    const image = params.get("image");
-
-    if (breed && image) {
-      document.getElementById("image-container").innerHTML = `
-        <h2>${breed.charAt(0).toUpperCase() + breed.slice(1)}</h2>
-        <img src="${decodeURIComponent(image)}" class="img-fluid" alt="${breed}">
-      `;
-    } else {
-      document.getElementById("image-container").innerHTML = "<p>No image selected.</p>";
+    function viewImage(imageUrl) {
+      const modalImage = document.getElementById("modalImage");
+      modalImage.src = imageUrl;
     }
   </script>
 
