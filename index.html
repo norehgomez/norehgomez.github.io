@@ -31,10 +31,62 @@
     h1 {
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
+    .portfolio-container {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .portfolio-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .portfolio-description {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .portfolio-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .portfolio-btn:hover {
+      background-color: #2980b9;
+    }
   </style>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">My Activities</a>
@@ -55,6 +107,65 @@
     </div>
   </nav>
 
+  <div class="container portfolio-container">
+    <h2 class="mb-4">My Portfolio</h2>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 1" class="portfolio-image">
+          <div class="portfolio-title">Project 1</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 2" class="portfolio-image">
+          <div class="portfolio-title">Project 2</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 3" class="portfolio-image">
+          <div class="portfolio-title">Project 3</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 4" class="portfolio-image">
+          <div class="portfolio-title">Project 4</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 5" class="portfolio-image">
+          <div class="portfolio-title">Project 5</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="portfolio-item">
+          <img src="https://via.placeholder.com/350x200" alt="Project 6" class="portfolio-image">
+          <div class="portfolio-title">Project 6</div>
+          <p class="portfolio-description">A brief description of the project goes here. Explain what the project is about.</p>
+          <a href="#" class="portfolio-btn">View Project</a>
+        </div>
+      </div>
+    </div>
+
+  <div class="container "></div>
   <div class="container mt-5">
     <h1 class="text-center mb-4">Course Activities</h1>
     <div class="row">
