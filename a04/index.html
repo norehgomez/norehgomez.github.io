@@ -19,18 +19,6 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    nav {
-      background: rgba(255, 255, 255, 0.8);
-    }
-
     .container {
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
@@ -40,16 +28,6 @@
     .btn-primary, .btn-danger, .btn-secondary {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
-    .text-center {
-      color: white;
-    }
-
-    #image-container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
   </style>
 </head>
 
@@ -58,16 +36,10 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dog Image Gallery</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a href="../index.html"><button  class="btn btn-outline-primary" >Home</button></a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-outline-danger" onclick="exitPage()">Exit</button>
+            <a href="view.html"><button class="btn btn-outline-primary">Go to Gallery</button></a>
           </li>
         </ul>
       </div>
@@ -76,80 +48,13 @@
 
   <div class="container mt-5">
     <h1 class="text-center">Dog Image Gallery</h1>
-    <form id="search-form" class="my-3">
+    <form action="view.html" method="GET" class="my-3">
       <div class="form-group">
-        <input type="text" id="breed" class="form-control" placeholder="Enter dog breed (e.g., hound)">
+        <input type="text" name="breed" class="form-control" placeholder="Enter dog breed (e.g., hound)">
       </div>
       <button type="submit" class="btn btn-primary mt-2">Search</button>
     </form>
-    <div class="row gallery" id="gallery"></div>
   </div>
-
-  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="imageModalLabel">Dog Image</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <img id="modalImage" src="" alt="Dog Image" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function goHome() {
-      alert("Navigating to the home page.");
-      window.location.href = "index.html";
-    }
-
-    function exitPage() {
-      const confirmExit = confirm("Are you sure you want to close this page?");
-      if (confirmExit) {
-        window.close();
-      }
-    }
-
-    document.getElementById("search-form").addEventListener("submit", async function (event) {
-      event.preventDefault();
-      const breed = document.getElementById("breed").value.toLowerCase();
-      const gallery = document.getElementById("gallery");
-      gallery.innerHTML = "";
-
-      if (!breed.trim()) {
-        gallery.innerHTML = "<p>Please enter a dog breed.</p>";
-        return;
-      }
-
-      try {
-        const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`);
-        const data = await response.json();
-
-        if (data.status === "success") {
-          data.message.slice(0, 12).forEach((image) => {
-            const col = document.createElement("div");
-            col.className = "col-md-4 col-sm-6";
-            col.innerHTML = `
-              <img src="${image}" alt="${breed}" class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="viewImage('${image}')">
-            `;
-            gallery.appendChild(col);
-          });
-        } else {
-          gallery.innerHTML = "<p>No images found for this breed.</p>";
-        }
-      } catch (error) {
-        gallery.innerHTML = "<p>Something went wrong. Please try again later.</p>";
-        console.error("Error fetching images:", error);
-      }
-    });
-
-    function viewImage(imageUrl) {
-      const modalImage = document.getElementById("modalImage");
-      modalImage.src = imageUrl;
-    }
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
