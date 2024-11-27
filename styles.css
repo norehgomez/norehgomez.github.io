@@ -94,8 +94,8 @@ header .logo {
 .activity-card {
   flex: 1;
   padding: 20px;
-  width: 250px; /* Set fixed width */
-  height: 200px; /* Set fixed height */
+  width: 250px;
+  height: 200px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   color: #000;
@@ -240,7 +240,7 @@ form button {
   }
 }
 #contact {
-background: rgba(0, 128, 192, 0.8); /* Ocean blue background */
+background: rgba(0, 128, 192, 0.8);
 padding: 50px 20px;
 position: relative;
 z-index: 2;
@@ -251,7 +251,7 @@ text-align: center;
 .contact-container {
 max-width: 600px;
 margin: 0 auto;
-background: rgba(255, 255, 255, 0.9); /* White with transparency */
+background: rgba(255, 255, 255, 0.9);
 padding: 30px;
 border-radius: 10px;
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -260,7 +260,7 @@ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 #contact h2 {
 font-size: 2rem;
 margin-bottom: 20px;
-color: #006994; /* Deep ocean blue */
+color: #006994;
 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -284,8 +284,8 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 #contact form input:focus,
 #contact form textarea:focus {
 outline: none;
-border-color: #006994; /* Focused input border */
-box-shadow: 0 0 10px rgba(0, 128, 192, 0.3); /* Glow effect */
+border-color: #006994; 
+box-shadow: 0 0 10px rgba(0, 128, 192, 0.3);
 }
 
 #contact form textarea {
@@ -295,7 +295,7 @@ resize: none;
 
 #contact form .btn {
 padding: 10px 20px;
-background: #006994; /* Ocean blue button */
+background: #006994;
 color: #fff;
 font-size: 1rem;
 font-weight: bold;
@@ -307,7 +307,7 @@ transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 #contact form .btn:hover {
-background: #004d73; /* Darker blue on hover */
+background: #004d73;
 box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
