@@ -4,35 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Page Image with Navbar</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Navbar with Embedded Image</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    body,
-    html {
+    body, html {
       margin: 0;
       padding: 0;
       height: 100%;
     }
 
-    .navbar-custom {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 10;
-    }
-
-    .navbar-custom .nav-link {
-      color: #fff;
-    }
-
-    .navbar-custom .nav-link:hover {
-      color: #ddd;
-    }
-
     .full-page-image {
-      background-image: url('your-image-url-here.jpg');
+      background-image: url('your-image-url-here.jpg'); /* Replace with your image URL */
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -41,58 +23,44 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      padding-top: 60px;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10; /* Ensures navbar is above the embedded image */
     }
 
     .embed-container {
       position: relative;
-      width: 100%;
+      width: 80%;
       height: 0;
-      padding-top: 70.7071%;
-      padding-bottom: 0;
+      padding-top: 56.25%; /* Aspect ratio of 16:9 */
+      margin: auto;
       box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
-      margin-top: 1.6em;
-      margin-bottom: 0.9em;
-      overflow: hidden;
       border-radius: 8px;
-      will-change: transform;
-      z-index: 1;
+      overflow: hidden;
+      z-index: 5; /* Below the navbar */
     }
 
     .embed-container iframe {
       position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .embed-link {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
-      color: #fff;
-      text-decoration: none;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 8px 16px;
-      border-radius: 4px;
-    }
-
-    .embed-link:hover {
-      background-color: rgba(0, 0, 0, 0.7);
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-custom">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">My Website</a>
+      <a class="navbar-brand" href="#">My Activities</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -100,37 +68,33 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a href="../index.html">
+              <button class="btn btn-outline-primary">Home</button>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="closePage()">Exit</a>
+            <button class="btn btn-outline-danger" onclick="exitPage()">Exit</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-
+  <!-- Full-Page Image with Embedded Canva -->
   <div class="full-page-image">
     <div class="embed-container">
       <iframe loading="lazy" src="https://www.canva.com/design/DAGTUyDG3j0/wX4NNDEqsklwZZFbrRE1jQ/view?embed"
         allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
     </div>
-    <a href="https://www.canva.com/design/DAGTUyDG3j0/wX4NNDEqsklwZZFbrRE1jQ/view?utm_content=DAGTUyDG3j0&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-      target="_blank" rel="noopener" class="embed-link">
-      Customer service we care at Angel's Burger.com | Marketing at Angel's Burger.com | Job opening careers at Angel's
-      Burger.com
-    </a>
   </div>
 
   <script>
-    function closePage() {
-      if (window.confirm("Are you sure you want to close this page?")) {
+    function exitPage() {
+      if (confirm("Are you sure you want to exit?")) {
         window.close();
       }
     }
   </script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
