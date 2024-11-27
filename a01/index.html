@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Image with Embedded Canva Design</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .full-page-image {
+      background-image: url('your-image-url-here.jpg'); /* Replace with your image URL */
+      background-size: cover; /* This ensures the image covers the entire screen */
+      background-position: center center; /* Keeps the image centered */
+      background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+      height: 100vh; /* Makes the container take the full height of the viewport */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .embed-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 70.7071%; /* Aspect ratio of 16:9 */
+      padding-bottom: 0;
+      box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
+      margin-top: 1.6em;
+      margin-bottom: 0.9em;
+      overflow: hidden;
+      border-radius: 8px;
+      will-change: transform;
+    }
+
+    .embed-container iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .embed-link {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    .embed-link:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="full-page-image">
+    <div class="embed-container">
+      <iframe loading="lazy" src="https://www.canva.com/design/DAGTUyDG3j0/wX4NNDEqsklwZZFbrRE1jQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+    </div>
+    <a href="https://www.canva.com/design/DAGTUyDG3j0/wX4NNDEqsklwZZFbrRE1jQ/view?utm_content=DAGTUyDG3j0&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener" class="embed-link">
+      Customer service we care at Angel's Burger.com | Marketing at Angel's Burger.com | Job opening careers at Angel's Burger.com
+    </a>
+  </div>
+</body>
+
+</html>
