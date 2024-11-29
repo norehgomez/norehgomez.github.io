@@ -14,7 +14,7 @@
     }
 
     .full-page-image {
-      background-image: url('your-image-url-here.jpg'); /* Replace with your image URL */
+      background-image: url('your-image-url-here.jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -30,19 +30,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 10; /* Ensures navbar is above the embedded image */
+      z-index: 10; 
     }
 
     .embed-container {
       position: relative;
       width: 80%;
       height: 0;
-      padding-top: 56.25%; /* Aspect ratio of 16:9 */
+      padding-top: 56.25%;
       margin: auto;
       box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
       border-radius: 8px;
       overflow: hidden;
-      z-index: 5; /* Below the navbar */
+      z-index: 5;
     }
 
     .embed-container iframe {
@@ -57,7 +57,7 @@
 </head>
 
 <body>
-  <!-- Navigation Bar -->
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">My Activities</a>
@@ -68,9 +68,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a href="../index.html">
-              <button class="btn btn-outline-primary">Home</button>
-            </a>
+            <a href="../index.html"><button class="btn btn-outline-primary">Home</button></a>
           </li>
           <li class="nav-item">
             <button class="btn btn-outline-danger" onclick="exitPage()">Exit</button>
@@ -80,7 +78,6 @@
     </div>
   </nav>
 
-  <!-- Full-Page Image with Embedded Canva -->
   <div class="full-page-image">
     <div class="embed-container">
       <iframe loading="lazy" src="https://www.canva.com/design/DAGTUyDG3j0/wX4NNDEqsklwZZFbrRE1jQ/view?embed"

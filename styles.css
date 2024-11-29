@@ -81,14 +81,29 @@ header .logo {
   padding-bottom: 50px;
 }
 
+#about .profile-pic-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 60%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+}
+
+
 .container {
   padding: 50px 20px;
 }
 
 .activities-grid {
+  margin-left: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 35px;
 }
 
 .activity-card {
@@ -101,9 +116,17 @@ header .logo {
   color: #000;
   text-align: center;
 }
+ h1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-.activity-card h3 {
-  font-size: 20px;
+h1 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 }
 
 .activity-card .btn {
@@ -113,6 +136,51 @@ header .logo {
   text-decoration: none;
   border-radius: 5px;
 }
+
+#midterms .container {
+  padding: 50px 20px;
+}
+
+#midterms .activities-grid {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+
+#midterms .activity-card {
+  flex: 1;
+  padding: 20px;
+  width: 250px;
+  height: 200px;
+  background-color: rgba(245, 245, 255, 0.9);
+  border-radius: 10px;
+  color: #000;
+  text-align: center;
+}
+
+#midterms h2 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #eaecee;
+}
+
+#midterms h3 {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #060606;
+}
+
+#midterms .activity-card .btn {
+  padding: 10px 15px;
+  background-color: #0056b3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
 
 form input,
 form textarea {
@@ -247,7 +315,9 @@ form button {
   position: relative;
   z-index: 2;
   color: #fff;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;;
 }
 
 .contact-container {
@@ -270,6 +340,10 @@ form button {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 }
 
 #contact form input,
